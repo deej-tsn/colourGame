@@ -39,11 +39,11 @@ export default function App() {
 
   
 
-  const [redAmount, setRedAmount] = useState("00");
+  const [redAmount, setRedAmount] = useState("FF");
 
-  const [greenAmount, setGreenAmount] = useState("00");
+  const [greenAmount, setGreenAmount] = useState("FF");
 
-  const [blueAmount, setBlueAmount] = useState("00");
+  const [blueAmount, setBlueAmount] = useState("FF");
 
   if(redAmount.length == 1){
     setRedAmount("0"+redAmount);
