@@ -20,7 +20,7 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: none; 
     /* creating a custom design */
-    width: 100px;
+    width:100%;
     cursor: pointer;
     outline: none;
     /*  slider progress trick  */
