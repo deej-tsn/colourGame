@@ -43,10 +43,10 @@ export default function App() {
   const [greenAmount, setGreenAmount] = useState("FF");
 
   const [blueAmount, setBlueAmount] = useState("FF");
-  const [count, start, pause, reset] = usePersistantTimer(false,{updateFrequency:1});
+  const [count,reset] = usePersistantTimer(false,{updateFrequency:1});
 
   const [timerState , setTimerState] = useState(true);
-  const [timerEnd, setTimerEnd] = useState(false);
+  //const [timerEnd, setTimerEnd] = useState(false);
 
 
   
