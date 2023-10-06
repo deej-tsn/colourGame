@@ -25,7 +25,7 @@ export default function PickColours(props : {red : Colour , green: Colour, blue:
         <form className="w-full h-fit flex flex-row  p-5 justify-evenly">
             <div className="flex flex-col">
                 <label className=" text-center">red : {redValue}</label>
-                <input type="range" min="0" max="255" defaultValue={0} onChange={(event) => setNewColour(event,0)}/>
+                <input type="range" min="0" max="255" defaultValue={redValue} onChange={(event) => setNewColour(event,0)}/>
 
             </div>
 
