@@ -24,13 +24,13 @@ const Timer = (props: {initialMinute:number, initialSeconds:number, timerState :
         return ()=> {
             clearInterval(myInterval);
           };
-    });
+    }, []);
 
     return (
         <div>
         { minutes === 0 && seconds === 0
             ? null
-            : <h1 className='p-2 bg-gray-50 rounded-lg'>Timer left:  {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</h1> 
+            : <h1 className='p-2 bg-gray-50 rounded-lg drop-shadow-lg'>Timer left:  {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</h1> 
         }
         </div>
     )
