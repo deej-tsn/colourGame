@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import {rgb2lab, deltaE} from 'rgb-lab';
+import {rgb2lab, deltaE} from './util/rgb-lab';
 import Main from './components/Main';
 
 
