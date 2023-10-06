@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import {rgb2lab, deltaE} from './util/rgb-lab';
 import Main from './components/Main';
+import usePersistantTimer from './util/ptime';
 
 
 
@@ -42,8 +43,24 @@ export default function App() {
   const [greenAmount, setGreenAmount] = useState("FF");
 
   const [blueAmount, setBlueAmount] = useState("FF");
+  const [count, start, pause, reset] = usePersistantTimer(false,{updateFrequency:1});
 
   const [timerState , setTimerState] = useState(true);
+  const [timerEnd, setTimerEnd] = useState(false);
+
+
+  
+  
+  
+  const countdown = (value : number, count : number) : number => {
+    count = count/1000;
+    if(count < value) return Math.round(value - count);
+    else{
+      setTimerState(false);
+      reset()
+      return 0;
+    } 
+  }
 
   if(redAmount.length == 1){
     setRedAmount("0"+redAmount);
@@ -77,7 +94,7 @@ export default function App() {
       chosenColour={chosenColour}
 
       distance={distanceAway()}
-
+      timer2 = {countdown(30, count)}
       timer={{
         timerState,
         setTimerState
