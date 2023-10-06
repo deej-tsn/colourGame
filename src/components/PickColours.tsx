@@ -1,7 +1,7 @@
-import { Colour } from "../types/Colour";
+import { Colour, TimerState } from "../types/Colour";
 
 
-export default function PickColours(props : {red : Colour , green: Colour, blue:Colour}) {
+export default function PickColours(props : {red : Colour , green: Colour, blue:Colour, timer : TimerState}) {
 
     const redValue = parseInt(props.red.colour,16);
     const greenValue = parseInt(props.green.colour,16);
@@ -23,20 +23,20 @@ export default function PickColours(props : {red : Colour , green: Colour, blue:
 
   return (
         <form className="w-full h-fit flex flex-col md:flex-row   p-5 justify-evenly">
-            <div className="flex flex-col my-5">
-                <label className=" text-center">red : {redValue}</label>
-                <input id="red" type="range" min="0" max="255" defaultValue={redValue} onChange={(event) => setNewColour(event,0)}/>
+            <div className="flex flex-col my-5 bg-gray-50 rounded-xl p-2">
+                <label className=" text-center">Red : {redValue}</label>
+                <input id="red" type="range" min="0" max="255" disabled = {!props.timer.timerState} defaultValue={redValue} onChange={(event) => setNewColour(event,0)}/>
             </div>
 
-            <div className="flex flex-col my-5">
-                <label className=" text-center">green: {greenValue}</label>
-                <input id="green" type="range" min="1" max="255" defaultValue={greenValue} onChange={(event) => setNewColour(event,1)}/>
+            <div className="flex flex-col my-5 bg-gray-50 rounded-xl p-2">
+                <label className=" text-center">Green: {greenValue}</label>
+                <input id="green" type="range" min="0" max="255" disabled = {!props.timer.timerState} defaultValue={greenValue} onChange={(event) => setNewColour(event,1)}/>
 
             </div>
 
-            <div className="flex flex-col my-5">
-                <label className=" text-center">blue : {blueValue}</label>
-                <input id="blue" type="range" min="1" max="255" defaultValue={blueValue} onChange={(event) => setNewColour(event,2)}/>
+            <div className="flex flex-col my-5  bg-gray-50 rounded-xl p-2">
+                <label className=" text-center">Blue : {blueValue}</label>
+                <input id="blue" type="range" min="0" max="255" disabled = {!props.timer.timerState} defaultValue={blueValue} onChange={(event) => setNewColour(event,2)}/>
 
             </div>
         </form>

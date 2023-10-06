@@ -37,13 +37,13 @@ export default function App() {
 
   const [chosenColour] = useState(randomColour());
 
-  
-
   const [redAmount, setRedAmount] = useState("FF");
 
   const [greenAmount, setGreenAmount] = useState("FF");
 
   const [blueAmount, setBlueAmount] = useState("FF");
+
+  const [timerState , setTimerState] = useState(true);
 
   if(redAmount.length == 1){
     setRedAmount("0"+redAmount);
@@ -77,6 +77,11 @@ export default function App() {
       chosenColour={chosenColour}
 
       distance={distanceAway()}
+
+      timer={{
+        timerState,
+        setTimerState
+      }}
     />
   )
 }
