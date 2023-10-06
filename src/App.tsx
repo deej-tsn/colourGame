@@ -43,21 +43,16 @@ export default function App() {
   const [greenAmount, setGreenAmount] = useState("FF");
 
   const [blueAmount, setBlueAmount] = useState("FF");
-  const [count,reset] = usePersistantTimer(false,{updateFrequency:1});
 
   const [timerState , setTimerState] = useState(true);
-  //const [timerEnd, setTimerEnd] = useState(false);
-
-
-  
-  
+  const [count,reset] = usePersistantTimer(false,{updateFrequency:1});
   
   const countdown = (value : number, count : number) : number => {
     count = count/1000;
     if(count < value) return Math.round(value - count);
     else{
-      setTimerState(false);
       reset()
+      setTimerState(false);
       return 0;
     } 
   }

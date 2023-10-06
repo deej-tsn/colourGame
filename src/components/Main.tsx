@@ -12,7 +12,7 @@ export default function main(props : {red : Colour , green: Colour, blue:Colour,
     end = (
     <div className=' w-full md:w-8/12 lg:w-6/1 flex flex-row justify-evenly'>
       <h1 className='w-42 bg-gray-50 rounded-xl p-2 drop-shadow-lg'>{`Distance Away: ${props.distance}`}</h1>
-      <h1 className='w-28 bg-gray-50 rounded-xl p-2 drop-shadow-lg'>{`Time Left: ${props.timer2}`}</h1>
+      <h1 className='w-30 bg-gray-50 rounded-xl p-2 drop-shadow-lg'>{`Time Left: ${props.timer2}`}</h1>
     </div>
     );
   }
@@ -36,9 +36,6 @@ export default function main(props : {red : Colour , green: Colour, blue:Colour,
             timer={props.timer}
         />
         {end}
-        
-        
-
       </div>
       
     </div>
