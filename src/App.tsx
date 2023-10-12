@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
-import {rgb2lab, deltaE} from './util/rgb-lab';
 import Main from './components/Main';
 import usePersistantTimer from './util/ptime';
+import { randomColour} from './util/colour';
 
 
 
@@ -10,33 +10,9 @@ import usePersistantTimer from './util/ptime';
 export default function App() {
 
 
-  function randomColour(){
-    const letters = '0123456789ABCDEF'.split('');
-    let color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.round(Math.random() * 15)];
-    }
-    return color;
-  }
+  const [chosenColour, setColour] = useState(randomColour());
 
-  function toRGBArray(colour : string){
-    let r = parseInt(colour[1] + colour[2], 16);
-    let g = parseInt(colour[3] + colour[4], 16);
-    let b = parseInt(colour[5] + colour[6], 16);
-
-    return [r,g,b];
-
-  }
-
-  function distanceAway() {
-    const lab1 = rgb2lab(toRGBArray(bgColour));
-    const lab2 = rgb2lab(toRGBArray(chosenColour));
-
-    return deltaE(lab1, lab2).toFixed(2);
-
-  }
-
-  const [chosenColour] = useState(randomColour());
+  const [difficulty, setDifficultyState] = useState(0);
 
   const [redAmount, setRedAmount] = useState("FF");
 
@@ -46,7 +22,19 @@ export default function App() {
 
   const [timerState , setTimerState] = useState(true);
   const [count,start, pause, reset] = usePersistantTimer(false,{updateFrequency:1});
-  if(timerState) start();
+
+
+
+  if(difficulty == 0){
+    
+  }
+  if(timerState && difficulty != 0){
+    start();
+  } 
+
+  useEffect(() => {
+    document.title = "Colour Game";
+  }, []);
   
   const countdown = (value : number, count : number) : number => {
     count = count/1000;
@@ -90,12 +78,18 @@ export default function App() {
       bgColour={bgColour}
       chosenColour={chosenColour}
 
-      distance={distanceAway()}
       timer2 = {countdown(30, count)}
       timer={{
         timerState,
         setTimerState
       }}
+
+      difficulty={{
+        difficulty : difficulty,
+        setDifficulty: setDifficultyState
+      }}
+
+      setColour = {setColour}
     />
   )
 }
