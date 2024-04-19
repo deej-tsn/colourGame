@@ -15,10 +15,4 @@ The following technologies were used:
 ## Project Layout
 
 Considering the simplicity of the project, there is a straightforward layout to the code.
-
 All of the custom coding occurs in the src folder.
-Within that src folder, each folder does the following:
-
-- Components - stores the react components
-- types - store the custom types
-- util - stores functions that some components will call
